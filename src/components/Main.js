@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Booking from "./Booking";
 import ConfirmedBooking from "./ConfirmedBooking";
 import Header from "./Header";
@@ -16,7 +16,7 @@ const fetchAPI = function(date) {
 };
 
 const Main = () => {
-    const initialState = { availableTimes: fetchAPI(new Date()) }; // Initialize state using fetchAPI
+    const initialState = { availableTimes: fetchAPI(new Date()) };
     const [state, dispatch] = useReducer(updateTimes, initialState);
 
     function updateTimes(state, date) {
@@ -29,15 +29,13 @@ const Main = () => {
     }
 
     return (
-        <Router>
-            <main className="main">
-                <Routes>
-                    <Route path="/" element={<Header />} />
-                    <Route path="/booking" element={<Booking availableTimes={state} dispatch={dispatch} submitForm={submitForm} />} />
-                    <Route path="/confirmed" element={<ConfirmedBooking />} />
-                </Routes>
-            </main>
-        </Router>
+        <main className="main">
+            <Routes>
+                <Route path="/" element={<Header />} />
+                <Route path="/booking" element={<Booking availableTimes={state} dispatch={dispatch} submitForm={submitForm} />} />
+                <Route path="/confirmed" element={<ConfirmedBooking />} />
+            </Routes>
+        </main>
     );
 }
 

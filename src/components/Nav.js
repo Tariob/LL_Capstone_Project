@@ -1,4 +1,4 @@
-
+// src/components/Nav.js
 import React, { useState } from "react";
 import logo from "../img/Logo.svg";
 
@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <nav className={`navbar ${menuOpen ? "open" : ""}`}>
       <a href="/" className="logo">
-        <img src={logo} alt="" />
+        <img src={logo} alt="Logo" />
       </a>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="bar"></div>
